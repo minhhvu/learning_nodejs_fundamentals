@@ -21,14 +21,14 @@ const fetch = (url) => {
     })
 }
 
-//Retrieve the random 5 posts from API server
+//Generate the random 5 integers in [0,99] for Post IDs
 let idList = [];
 for (i=0; i<5; i++){
     idList[i] = Math.floor(Math.random()*100);
 }
 
 idList.map(id => {
-    // console.log(id);
+
     let url = "https://jsonplaceholder.typicode.com/posts/" + id.toString();
 
     fetch(url).then( response => {
