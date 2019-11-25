@@ -1,4 +1,5 @@
 /*
+Solution 2
 API server: https://jsonplaceholder.typicode.com/
 Package gửi request: https://www.npmjs.com/package/fetch
 
@@ -8,7 +9,6 @@ Package gửi request: https://www.npmjs.com/package/fetch
 
 Thực hiện theo cả callback và promise
 
-Solution 1: Use Parallel Async
  */
 
 var fetchUrl = require('fetch').fetchUrl;
@@ -55,16 +55,28 @@ for (i=0; i<5; i++){
     idList[i] = Math.floor(Math.random()*100);
 }
 
-var promises = idList.map(id => {
-    return getPostAndComment(id)
-})
-
-console.log(idList)
-
-Promise.all(promises).then(data => {
+//Fetch post and comment one by one
+getPostAndComment(idList[0]).then(data => {
     console.log('-----------------------------')
     console.log(data)
-}).catch(err => {
+
+    return getPostAndComment(idList[1])
+}).then(data => {
+    console.log('-----------------------------')
+    console.log(data)
+
+    return getPostAndComment(idList[2])
+}).then(data => {
+    console.log('-----------------------------')
+    console.log(data)
+
+    return getPostAndComment(idList[3])
+}).then(data => {
+    console.log('-----------------------------')
+    console.log(data)
+
+    return getPostAndComment(idList[4])
+}).catch( err => {
     console.log('-----------------------------')
     console.log(err)
 })
