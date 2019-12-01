@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+
+<h1><%= title %></h1>
+<p>Data from <a href="https://jsonplaceholder.typicode.com" target="_blank">jsonplaceholder</a></p>
+<!--<p> <%= posts %></p>-->
+
+<% posts.forEach(function(post){ %>
+    <h5>Post <%= post.id %>: <%= post.title %></h5>
+    <p><%= post.body %></p>
+<% }) %>
+
+</body>
+</html>
