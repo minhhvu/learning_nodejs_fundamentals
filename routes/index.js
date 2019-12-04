@@ -2,6 +2,7 @@ var express = require('express');
 var passport = require('passport');
 var router = express.Router();
 var checkNotAuthenicated = require('../controller/auth/checkNotAuthenticated');
+var DB = require('../models/DB');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -18,7 +19,7 @@ const loginSetting = {
   failureRedirect: '/login',
   failureFlash: true
 };
-router.post('/login', passport.authenticate('local', loginSetting));
+router.post('/login', DB.checkUserLogin, passport.authenticate('local', loginSetting));
 
 /* Register page */
 router.get('/register', checkNotAuthenicated, (req, res) => {
@@ -27,7 +28,7 @@ router.get('/register', checkNotAuthenicated, (req, res) => {
 
 /* Log out */
 router.get('/logout', (req, res)=>{
-  req.logOut();
+  req.logout();
   res.redirect('/');
 });
 
