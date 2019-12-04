@@ -5,17 +5,17 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
 <body>
+    <%- include('components/navbar') %>
+    <h1><%= title %></h1>
+    <form action="/posts/command_add" method="post">
+        <textarea name="content" style="width: 50%; display: block; margin-bottom: 1.5em" placeholder="what is in on your mind? .........."></textarea>
+        <input type="submit" value="Add">
+    </form>
 
-<h1><%= title %></h1>
-<form action="/posts/command_add" method="post">
-    <textarea name="content" style="width: 50%; display: block; margin-bottom: 1.5em" placeholder="what is in on your mind? .........."></textarea>
-    <input type="submit" value="Add">
-</form>
-
-<% if (typeof hasNewPost != "undefined" && hasNewPost) { %>
-    <h4>New Post</h4>
-    <p><%= newPost %></p>
-<% } %>
+    <% if (typeof hasNewPost != "undefined" && hasNewPost) { %>
+        <h4>New Post</h4>
+        <p><%= newPost %></p>
+    <% } %>
 
 </body>
 </html>

@@ -5,15 +5,16 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
 <body>
+    <%- include('components/navbar') %>
 
-<h1><%= title %></h1>
-<p>Data from <a href="https://jsonplaceholder.typicode.com" target="_blank">jsonplaceholder</a></p>
-<!--<p> <%= posts %></p>-->
+    <h1><%= title %></h1>
+    <p>Data from <a href="https://jsonplaceholder.typicode.com" target="_blank">jsonplaceholder</a></p>
+    <!--<p> <%= posts %></p>-->
 
-<% posts.forEach(function(post){ %>
-    <h5>Post <%= post.id %>: <%= post.title %></h5>
-    <p><%= post.body %></p>
-<% }) %>
+    <% posts.forEach(function(post){ %>
+        <a href="/posts/view/<%= post.id %>" style="color: black; font-weight: bold">Post <%= post.id %>: <%= post.title %></a>
+        <p><%= post.body %></p>
+    <% }) %>
 
 </body>
 </html>

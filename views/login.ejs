@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= title %></title>
+        <link rel="stylesheet" href='/stylesheets/style.css'>
+    </head>
+    <body>
+        <%- include('components/navbar') %>
+        <h1>Login</h1>
+        <form style="margin-bottom: 2em">
+            <div style="margin-bottom: 1rem">
+                <label>Username: </label>
+                <input type="text" name="username">
+            </div>
+            <div style="margin-bottom: 1rem">
+                <label>Password: </label>
+                <input type="password" name="password"><br>
+            </div>
+            <input type="submit" value="Login">
+        </form>
+        <a href="/register">Register</a>
+    </body>
+</html>

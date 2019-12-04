@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> <%= title %></title>
+        <link rel="stylesheet" href="/stylesheets/style.css">
+    </head>
+    <body>
+        <%- include('components/navbar') %>
+        <h1>Register</h1>
+        <form  style="margin-bottom: 2em">
+            <div style="margin-bottom: 1em">
+                <label>Username: </label><input type="text" name="username">
+            </div>
+            <div style="margin-bottom: 1em">
+                <label>Email: </label><input type="text" name="email">
+            </div>
+            <div style="margin-bottom: 1em">
+                <label>Password: </label><input type="text" name="password">
+            </div>
+            <div  style="margin-top: 1em">
+                <label>Confirm Password: </label><input type="text" name="re-password">
+            </div>
+            <input type="submit" value="Submit" style="margin-top: 1em">
+        </form>
+        <a href="/login"">Login</a>
+    </body>
+</html>
