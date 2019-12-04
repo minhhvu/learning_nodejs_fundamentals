@@ -19,7 +19,7 @@ const loginSetting = {
   failureRedirect: '/login',
   failureFlash: true
 };
-router.post('/login', DB.checkUserLogin, passport.authenticate('local', loginSetting));
+router.post('/login', passport.authenticate('local', loginSetting));
 
 /* Register page */
 router.get('/register', checkNotAuthenicated, (req, res) => {
