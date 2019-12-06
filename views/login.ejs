@@ -7,6 +7,11 @@
     <body>
         <%- include('components/navbar') %>
         <h1>Login</h1>
+        <ul style="color: aqua">
+            <% if (typeof hasError !== 'undefined' && hasError) { errors.map(message => {%>
+                <li><%= message %></li>
+            <% })} %>
+        </ul>
         <form style="margin-bottom: 2em" method="post" action="/login">
             <div style="margin-bottom: 1rem">
                 <label>Username: </label>
