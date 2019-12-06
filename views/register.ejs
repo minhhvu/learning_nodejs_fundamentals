@@ -7,6 +7,11 @@
     <body>
         <%- include('components/navbar') %>
         <h1>Register</h1>
+        <ul style="color: aqua">
+            <% if (typeof hasError !== 'undefined' && hasError) { errors.map(message => {%>
+                <li><%= message %></li>
+            <% })} %>
+        </ul>
         <form  style="margin-bottom: 2em" method="post" action="/register">
             <div style="margin-bottom: 1em">
                 <label>Username: </label><input type="text" name="username">
@@ -15,13 +20,13 @@
                 <label>Email: </label><input type="text" name="email">
             </div>
             <div style="margin-bottom: 1em">
-                <label>Password: </label><input type="text" name="password">
+                <label>Password: </label><input type="password" name="password">
             </div>
             <div  style="margin-top: 1em">
-                <label>Confirm Password: </label><input type="text" name="re-password">
+                <label>Confirm Password: </label><input type="password" name="re-password">
             </div>
             <input type="submit" value="Submit" style="margin-top: 1em">
         </form>
-        <a href="/login"">Login</a>
+        <a href="/login">Login</a>
     </body>
 </html>

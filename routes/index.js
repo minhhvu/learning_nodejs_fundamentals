@@ -21,7 +21,7 @@ router.get('/register', checkNotAuthenicated, (req, res) => {
   res.render('register', {title: 'Register'})
 })
 
-router.post('/register', Authen.register);
+router.post('/register', Authen.registerCheck, Authen.registerValidator, Authen.register);
 
 /* Log out page*/
 router.get('/logout', (req, res)=>{
