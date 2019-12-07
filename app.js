@@ -8,7 +8,7 @@ var passport = require('passport');
 var flash = require('express-flash');
 var session = require('express-session');
 var authenStrategy = require('./controller/auth/authenStrategy');
-var DB = require('./models/DB');
+var User = require('./respository/User');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -34,8 +34,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 //Config passport-local
 passport.use(authenStrategy);
 
-passport.serializeUser((user,done) => done(null, user.id));
-passport.deserializeUser((id, done)=> done(null, DB.getUserById(id)));
+passport.serializeUser((user,done) => done(null, user._id));
+passport.deserializeUser((id, done)=> done(null, User.getUserById(id)));
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(session({

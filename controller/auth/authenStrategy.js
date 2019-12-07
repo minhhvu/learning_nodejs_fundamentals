@@ -1,11 +1,11 @@
 var path = require('path');
 var localStrategy = require('passport-local').Strategy;
-var DB = require('../../models/DB');
+var User = require('../../respository/User');
 
 const strategyConfig = {usernameField: 'username', passwordField: 'password'};
-const strategyHandler = (username, password, done) => {
-    if (DB.checkUserLogin(username, password)) {
-        let userInfo = DB.getUserInfo(username);
+const strategyHandler = async (username, password, done) => {
+    let userInfo = await User.checkUserLogin(username, password);
+    if (userInfo !== null) {
         return done(null, userInfo)
     }
 

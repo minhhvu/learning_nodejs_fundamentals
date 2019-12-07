@@ -1,11 +1,12 @@
 const {check, validationResult } = require('express-validator');
+var User = require('../../respository/User');
 
 // @route POST /register
 // @desc submit register form
 const registerCheck = [
     check('email').isEmail().withMessage('is invalid.'),
     check('username').notEmpty().withMessage(' is required.'),
-    check('password').isLength({min: 8}).withMessage('requires at least 8 characters.'),
+    check('password').isLength({min: 6}).withMessage('requires at least 6 characters.'),
     check('re-password').custom((value, { req }) => value === req.body.password).withMessage('needs to the same as password.')
 ]
 
@@ -29,7 +30,13 @@ const registerValidator = (req, res, next) => {
 }
 
 const register = (req, res) => {
-    res.redirect('/');
+    let add = User.addUser(req.body.username, req.body.email, req.body.paswword);
+    if (add === true){
+        res.redirect('/');
+    } else {
+        console.error(add)
+        res.send('Failed to add user into DB!');
+    }
 }
 
 //@route POST /login

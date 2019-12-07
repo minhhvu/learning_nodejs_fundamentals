@@ -2,10 +2,18 @@ var express = require('express');
 var router = express.Router();
 var checkNotAuthenicated = require('../controller/auth/checkNotAuthenticated');
 var DB = require('../models/DB');
-var Authen = require('../controller/auth/authen')
+var Authen = require('../controller/auth/authen');
+var test = require('../respository/test');
+
+/* Test */
+router.get('/test', (req, res) => {
+  test.test1();
+  res.send('Testing');
+})
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  // if (req.isAuthenticated) console.log(await req.user);
   res.render('index', { title: 'Homepage' });
 });
 
