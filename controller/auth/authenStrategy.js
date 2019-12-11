@@ -5,7 +5,7 @@ var User = require('../../respository/User');
 const strategyConfig = {usernameField: 'username', passwordField: 'password'};
 const strategyHandler = async (username, password, done) => {
     let userInfo = await User.checkUserLogin(username, password);
-    if (userInfo !== null) {
+    if (userInfo) {
         return done(null, userInfo)
     }
 
