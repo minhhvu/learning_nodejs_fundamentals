@@ -32,7 +32,7 @@ const registerValidator = (req, res, next) => {
 const register = (req, res) => {
     let add = User.addUser(req.body.username, req.body.email, req.body.paswword);
     if (add === true){
-        res.redirect('/');
+        res.redirect('/login');
     } else {
         console.error(add)
         res.send('Failed to add user into DB!');

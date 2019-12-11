@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var checkNotAuthenicated = require('../controller/auth/checkNotAuthenticated');
-var DB = require('../models/DB');
 var Authen = require('../controller/auth/authen');
 var test = require('../respository/test');
 
