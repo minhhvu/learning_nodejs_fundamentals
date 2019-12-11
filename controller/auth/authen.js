@@ -30,7 +30,7 @@ const registerValidator = (req, res, next) => {
 }
 
 const register = (req, res) => {
-    let add = User.addUser(req.body.username, req.body.email, req.body.paswword);
+    let add = User.addUser(req.body.username, req.body.email, req.body.password);
     if (add === true){
         res.redirect('/login');
     } else {
