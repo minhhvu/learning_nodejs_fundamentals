@@ -21,14 +21,14 @@ router.get('/login', checkNotAuthenicated, (req, res) => {
   res.render('login', {title: 'Login'})
 })
 
-router.post('/login', Authen.loginCheck, Authen.loginValidator, Authen.login);
+router.post('/login', Authen.login);
 
 /* Register page */
 router.get('/register', checkNotAuthenicated, (req, res) => {
   res.render('register', {title: 'Register'})
 })
 
-router.post('/register', Authen.registerCheck, Authen.registerValidator, Authen.register);
+router.post('/register', Authen.register);
 
 /* Log out page*/
 router.get('/logout', (req, res)=>{

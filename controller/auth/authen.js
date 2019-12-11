@@ -29,15 +29,18 @@ const registerValidator = (req, res, next) => {
     return next();
 }
 
-const register = (req, res) => {
-    let add = User.addUser(req.body.username, req.body.email, req.body.password);
-    if (add === true){
-        res.redirect('/login');
-    } else {
-        console.error(add)
-        res.send('Failed to add user into DB!');
-    }
-}
+const register = [
+    registerCheck,
+    registerValidator,
+        (req, res) => {
+        let add = User.addUser(req.body.username, req.body.email, req.body.password);
+        if (add === true){
+            res.redirect('/login');
+        } else {
+            console.error(add)
+            res.send('Failed to add user into DB!');
+        }
+    }]
 
 //@route POST /login
 //@desc submit login form
@@ -73,15 +76,14 @@ const loginSetting = {
     failureFlash: true
 };
 
-const login = passport.authenticate('local', loginSetting);
+const login = [
+    loginCheck,
+    loginValidator,
+    passport.authenticate('local', loginSetting)];
 
 const Authen = {
     register,
-    registerCheck,
-    registerValidator,
     login,
-    loginCheck,
-    loginValidator
 }
 
 module.exports = Authen;
